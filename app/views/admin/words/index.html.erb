@@ -1,0 +1,27 @@
+<h1>Listing admin_words</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_words.each do |admin_word| %>
+      <tr>
+        <td><%= admin_word.name %></td>
+        <td><%= link_to 'Show', admin_word %></td>
+        <td><%= link_to 'Edit', edit_admin_word_path(admin_word) %></td>
+        <td><%= link_to 'Destroy', admin_word, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Word', new_admin_word_path %>
