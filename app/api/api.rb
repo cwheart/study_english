@@ -11,7 +11,7 @@ class API < Grape::API
   formatter :json, PageFormatter
   default_format :json
 
-  mount Rest::Word
+  # mount Rest::Word
 
   add_swagger_documentation mount_path: "/api_doc", # base_path: 'http://localhost:8080',
   api_version: "v2",
