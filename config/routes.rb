@@ -1,7 +1,6 @@
 StudyEnglish::Application.routes.draw do
-  resources :word_categories
-
-  resources :words
+  # resources :word_categories
+  # resources :words
 
   get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
@@ -55,5 +54,6 @@ StudyEnglish::Application.routes.draw do
   # Example resource route within a namespace:
   namespace :admin do
     resources :words
+    resources :word_categories
   end
 end
