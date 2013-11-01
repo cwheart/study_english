@@ -1,4 +1,6 @@
 StudyEnglish::Application.routes.draw do
+  mount API => '/'
+
   devise_for :admin_users
 
   # resources :word_categories

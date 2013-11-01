@@ -38,6 +38,8 @@ gem 'kaminari'
 
 # api 插件
 gem 'grape'
+gem 'grape-swagger'
+gem 'grape-entity'
 
 # 权限验证
 gem 'devise'
