@@ -1,4 +1,6 @@
 StudyEnglish::Application.routes.draw do
+  resources :word_categories
+
   resources :words
 
   get "welcome/index"
