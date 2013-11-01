@@ -36,6 +36,12 @@ gem 'jbuilder', '~> 1.2'
 # 分页插件
 gem 'kaminari'
 
+# api 插件
+gem 'grape'
+
+# 权限验证
+gem 'devise'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

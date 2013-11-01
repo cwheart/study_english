@@ -1,8 +1,9 @@
 StudyEnglish::Application.routes.draw do
-  # resources :word_categories
-  # resources :words
+  devise_for :admin_users
 
-  get "welcome/index"
+  # resources :word_categories
+  resources :words, only: [:index]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -55,5 +56,8 @@ StudyEnglish::Application.routes.draw do
   namespace :admin do
     resources :words
     resources :word_categories
+
+    root "welcome#index"
+    get "verify" => "welcome#verify"
   end
 end
