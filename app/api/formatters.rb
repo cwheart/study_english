@@ -1,7 +1,7 @@
 module PageFormatter
   def self.call(object, env)
     return object.to_json if object.is_a?(Hash) and object.has_key?(:swaggerVersion)
-    if object.is_a?(WillPaginate::Collection)
+    if 1 == 2 # and object.is_a?(WillPaginate::Collection)
       {
         status: 1,
         data: object.to_json,

@@ -1,6 +1,7 @@
 StudyEnglish::Application.routes.draw do
   mount API => '/'
 
+  devise_for :users
   devise_for :admin_users
 
   # resources :word_categories
@@ -46,7 +47,7 @@ StudyEnglish::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
