@@ -1,10 +1,10 @@
-class Admin::WordsController < ApplicationController
-  before_action :set_admin_word, only: [:show, :edit, :update, :destroy]
+class Admin::WordsController < Admin::BaseController
+  before_action :set_word, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/words
   # GET /admin/words.json
   def index
-    @admin_words = Admin::Word.all
+    @words = Word.all.page(params[:page])
   end
 
   # GET /admin/words/1
@@ -14,7 +14,7 @@ class Admin::WordsController < ApplicationController
 
   # GET /admin/words/new
   def new
-    @admin_word = Admin::Word.new
+    @word = Word.new
   end
 
   # GET /admin/words/1/edit
@@ -24,15 +24,15 @@ class Admin::WordsController < ApplicationController
   # POST /admin/words
   # POST /admin/words.json
   def create
-    @admin_word = Admin::Word.new(admin_word_params)
+    @word = Word.new(word_params)
 
     respond_to do |format|
-      if @admin_word.save
-        format.html { redirect_to @admin_word, notice: 'Word was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @admin_word }
+      if @word.save
+        format.html { redirect_to [:admin, @word], notice: 'Word was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @word }
       else
         format.html { render action: 'new' }
-        format.json { render json: @admin_word.errors, status: :unprocessable_entity }
+        format.json { render json: @word.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -41,12 +41,12 @@ class Admin::WordsController < ApplicationController
   # PATCH/PUT /admin/words/1.json
   def update
     respond_to do |format|
-      if @admin_word.update(admin_word_params)
-        format.html { redirect_to @admin_word, notice: 'Word was successfully updated.' }
+      if @word.update(word_params)
+        format.html { redirect_to [:admin, @word], notice: 'Word was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @admin_word.errors, status: :unprocessable_entity }
+        format.json { render json: @word.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -54,7 +54,7 @@ class Admin::WordsController < ApplicationController
   # DELETE /admin/words/1
   # DELETE /admin/words/1.json
   def destroy
-    @admin_word.destroy
+    @word.destroy
     respond_to do |format|
       format.html { redirect_to admin_words_url }
       format.json { head :no_content }
@@ -63,12 +63,12 @@ class Admin::WordsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_admin_word
-      @admin_word = Admin::Word.find(params[:id])
+    def set_word
+      @word = Word.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def admin_word_params
-      params.require(:admin_word).permit(:name)
+    def word_params
+      params.require(:word).permit(:name)
     end
 end

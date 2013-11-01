@@ -1,9 +1,11 @@
-<h1>Listing admin_words</h1>
+<h1>Listing words</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>单词</th>
+      <th>发音</th>
+      <th>中文</th>
       <th></th>
       <th></th>
       <th></th>
@@ -11,16 +13,20 @@
   </thead>
 
   <tbody>
-    <% @admin_words.each do |admin_word| %>
+    <% @words.each do |word| %>
       <tr>
-        <td><%= admin_word.name %></td>
-        <td><%= link_to 'Show', admin_word %></td>
-        <td><%= link_to 'Edit', edit_admin_word_path(admin_word) %></td>
-        <td><%= link_to 'Destroy', admin_word, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= word.name %></td>
+        <td><%= word.pronounce %></td>
+        <td><%= word.content %></td>
+        <td><%= link_to 'Show', [:admin, word] %></td>
+        <td><%= link_to 'Edit', edit_admin_word_path(word) %></td>
+        <td><%= link_to 'Destroy', [:admin, word], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= paginate @words %>
 
 <br>
 
