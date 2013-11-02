@@ -6,16 +6,19 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-File.open("res/word.txt", 'r') do |f|
-  words = []
-  while line=f.gets
-    arr = line.strip.split(/[\[\]\/]/)
-    next if arr.empty?
-    words.push({name: arr[0].strip, pronounce: arr[1].strip, content: arr[2].strip})
-    if words.count >= 200
-      Word.create(words)
-      words = []
+if Word.count.zero?
+  File.open("res/word.txt", 'r') do |f|
+    words = []
+    while line=f.gets
+      arr = line.strip.split(/[\[\]\/]/)
+      next if arr.empty?
+      words.push({name: arr[0].strip, pronounce: arr[1].strip, content: arr[2].strip})
+      if words.count >= 200
+        Word.create(words)
+        words = []
+      end
     end
+    Word.create(words)
   end
-  Word.create(words)
 end
+Course.create([{name: "生活常用词汇 "}]) if Course.zero?

@@ -1,14 +1,18 @@
 StudyEnglish::Application.routes.draw do
-  resources :courses
-
   mount API => '/'
 
   devise_for :users
   devise_for :admin_users
 
   # resources :word_categories
-  resources :words, only: [:index]
+  resources :courses, only: [:index, :show, :update, :destroy] do
+    member do
+      get :explore # 探索模式
+      get :test # 测试模式
+    end
 
+    resources :words, only: [:index]
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

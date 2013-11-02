@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :explore, :test]
 
   # GET /courses
   # GET /courses.json
@@ -59,6 +59,14 @@ class CoursesController < ApplicationController
       format.html { redirect_to courses_url }
       format.json { head :no_content }
     end
+  end
+
+  def explore
+    @words = @course.words.page(params[:page])
+  end
+
+  def test
+    @words = @course.words.page(params[:page])
   end
 
   private
