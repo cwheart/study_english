@@ -1,4 +1,6 @@
 StudyEnglish::Application.routes.draw do
+  resources :courses
+
   mount API => '/'
 
   devise_for :users
