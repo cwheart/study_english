@@ -21,4 +21,4 @@ if Word.count.zero?
     Word.create(words)
   end
 end
-Course.create([{name: "生活常用词汇 "}]) if Course.zero?
+Course.create([{name: "生活常用词汇 "}]) if Course.count.zero?
