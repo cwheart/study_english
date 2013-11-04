@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-unless Word.count.zero?
+if Word.count.zero?
   File.open("res/word.txt", 'r') do |f|
     words = []
     while line=f.gets
@@ -21,4 +21,4 @@ unless Word.count.zero?
     Word.create(words)
   end
 end
-Course.create([{name: "生活常用词汇", kee: 'common'}]) unless Course.count.zero?
+Course.create([{name: "生活常用词汇", kee: 'common'}]) if Course.count.zero?
