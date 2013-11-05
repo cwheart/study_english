@@ -1,3 +1,11 @@
 .content {
   margin-top: 50px;
 }
+
+.word-list dl {
+  display: none;
+}
+
+.word-list dl .current {
+  display: block;
+}

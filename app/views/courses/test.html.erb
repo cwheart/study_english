@@ -3,18 +3,28 @@
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
 
-<div class="">
+<%= form_tag("", id: "word-form") do %>
+<div class="word-list">
   <% @words.each do |word| %>
-    <div>
-      <div><%= word.content %></div>
-      <div><%= text_field_tag :name %></div>
-    </div>
+    <dl>
+      <dt><%= word.content %></dt>
+      <dd><%= text_field_tag :name %></d>
+    </dl>
   <% end %>
+  
+  <div><%= submit_tag "提交" %></div>
 </div>
+<% end -%>
 
-<% content_for :footer do -%>
+<% content_for :script do -%>
 <script>
 $(function(){
+  $(".word-list dl:first").addClass("current");
+  $("#word-form").submit(function(){
+    $(".word-list .current");
+    $(".word-list .current").removeClass("current");
+    return false;
+  });
   // alert(location.hash);
 });
 </script>
