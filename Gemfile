@@ -54,7 +54,7 @@ group :doc do
 end
 
 group :production do
-  gem 'unicorn'
+  # gem 'unicorn'
   gem 'puma'
 end
 
