@@ -118,6 +118,7 @@ GEM
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.7.0)
+    newrelic_rpm (3.6.6.147)
     optionable (0.1.1)
     origin (1.1.0)
     orm_adapter (0.4.0)
@@ -219,6 +220,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   mongoid!
+  newrelic_rpm
   puma
   rails (= 4.0.0)
   sass-rails (~> 4.0.0)
