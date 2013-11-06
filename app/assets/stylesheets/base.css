@@ -6,6 +6,6 @@
   display: none;
 }
 
-.word-list dl .current {
+.word-list dl.current {
   display: block;
 }

@@ -6,7 +6,7 @@
 <%= form_tag("", id: "word-form") do %>
 <div class="word-list">
   <% @words.each do |word| %>
-    <dl>
+    <dl id="<%= word.id %>" answer="<%= word.name %>">
       <dt><%= word.content %></dt>
       <dd><%= text_field_tag :name %></d>
     </dl>
@@ -19,13 +19,27 @@
 <% content_for :script do -%>
 <script>
 $(function(){
-  $(".word-list dl:first").addClass("current");
+  if($(location.hash).size() > 0){
+    $(location.hash).addClass("current");
+  }else{
+    $(".word-list dl:first").addClass("current");
+  }
   $("#word-form").submit(function(){
-    $(".word-list .current");
-    $(".word-list .current").removeClass("current");
-    return false;
+    $(".word-list .current span.error").remove();
+    if($(".word-list .current").is("dl:last")){
+      
+    }else{
+      if($(".word-list .current input").val() == $(".word-list .current").attr("answer")){
+        $(".word-list .current").removeClass("current").next().addClass("current");
+        $(".word-list .current input").focus();
+      }else{
+        $(".word-list .current input").focus().after("<span class='error'>拼写错误</span>");
+      }
+      // location.hash = "#" + $(".word-list .current").attr("id");
+      return false;
+    }
   });
-  // alert(location.hash);
+
 });
 </script>
 <% end -%>
