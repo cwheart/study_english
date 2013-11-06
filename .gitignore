@@ -15,6 +15,7 @@ config/database.yml
 config/mongoid.yml
 config/unicorn.rb
 config/puma.rb
+config/newrelic.yml
 
 # Ignore all logfiles and tempfiles.
 log/*

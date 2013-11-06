@@ -9,7 +9,7 @@ set :scm, :git
 # set :log_level, :debug
 # set :pty, true
 
-set :linked_files, %w{config/mongoid.yml config/puma.rb}
+set :linked_files, %w{config/mongoid.yml config/puma.rb config/newrelic.yml}
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets tmp/states vendor/bundle public/system}
 
 set :keep_releases, 5
@@ -22,7 +22,7 @@ namespace :deploy do
       execute "cd #{deploy_to}/current/ && bundle exec puma -C config/puma.rb"
     end
   end
- 
+
   desc'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
