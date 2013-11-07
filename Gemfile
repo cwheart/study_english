@@ -31,21 +31,17 @@ gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
-# ��ʽ 
 gem "twitter-bootstrap-rails"
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-# 分页插件
 gem 'kaminari'
 
-# api 插件
 gem 'grape'
 gem 'grape-swagger'
 gem 'grape-entity'
 
-# 权限验证
 gem 'devise'
 
 group :doc do
