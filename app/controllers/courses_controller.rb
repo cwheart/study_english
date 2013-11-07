@@ -1,6 +1,8 @@
 class CoursesController < ApplicationController
+  before_filter :authenticate_user!
+
   before_action :set_course, only: [:show, :update, :destroy, :explore, :test]
-  before_action :set_words, only: [:show, :explore, :test]
+  before_action :set_quiz, only: [:show, :explore, :test]
 
   # GET /courses
   # GET /courses.json
@@ -48,9 +50,15 @@ class CoursesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_course
       @course = Course.find_by(kee: params[:id])
+      @user_course = UserCourse.where(user_id: current_user.id, course_id: @course.id).first
     end
 
-    def set_words
+    def set_quiz
       @words = @course.words.page(params[:page])
+      @quiz = Quiz.create(course_id: @course.id, user_course_id: @user_course.id) do |q|
+        q.user_id = current_user.id
+      end
+      @quiz_answer = @quiz.quiz_answer
+      @quiz_answer.quiz_answer_items.build_items
     end
 end
