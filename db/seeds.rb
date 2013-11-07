@@ -21,4 +21,12 @@ if Word.count.zero?
     Word.create(words)
   end
 end
-Course.create([{name: "生活常用词汇", kee: 'common'}]) if Course.count.zero?
+
+Course.create([{name: "生活常用词汇", kee: 'common'}]) do |c|
+  c.words = Word.all
+  c.save
+end if Course.count.zero?
+
+User.create(email: "xinshuaifeng@126.com", password: "123456xsf", password_confirmation: "123456xsf") if User.count.zero?
+
+UserCourse.create(user: User.first, course: Course.first) if UserCourse.count.zero?

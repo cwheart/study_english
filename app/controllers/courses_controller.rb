@@ -54,11 +54,8 @@ class CoursesController < ApplicationController
     end
 
     def set_quiz
-      @words = @course.words.page(params[:page])
-      @quiz = Quiz.create(course_id: @course.id, user_course_id: @user_course.id) do |q|
-        q.user_id = current_user.id
-      end
-      @quiz_answer = @quiz.quiz_answer
+      @quiz = Quiz.create(course_id: @course.id, user_course_id: @user_course.id, user_id: current_user.id)
+      @quiz_answer = QuizAnswer.new(quiz: @quiz)
       @quiz_answer.quiz_answer_items.build_items
     end
 end

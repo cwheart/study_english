@@ -44,6 +44,9 @@ gem 'grape-entity'
 
 gem 'devise'
 gem 'simple_form', '~> 3.0.0.rc'
+# gem 'client_side_validations'
+# gem 'client_side_validations-simple_form'
+# gem 'client_side_validations-mongoid'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

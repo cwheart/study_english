@@ -5,8 +5,8 @@ class QuizAnswer
   belongs_to :quiz
   has_many :quiz_answer_items, inverse_of: :quiz_answer do
     def build_items(count=20)
-      count.times do
-        build
+      @base.quiz.words.each do |word|
+        build(content: word.content, word_id: word.id, name_tmp: word.name)
       end if @target.blank?
     end
   end
