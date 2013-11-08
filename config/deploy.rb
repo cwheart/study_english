@@ -1,4 +1,4 @@
-set :application, 'blog'
+set :application, 'study_english'
 set :repo_url, 'git@github.com:cwheart/study_english.git'
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
