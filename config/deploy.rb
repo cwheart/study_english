@@ -26,7 +26,8 @@ namespace :deploy do
   desc'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-       execute "cd #{deploy_to}/current/ && bundle exec pumactl -S tmp/states/puma.state restart"
+       # execute "cd #{deploy_to}/current/ && bundle exec pumactl -S tmp/states/puma.state restart"
+       execute "cd #{deploy_to}/current/ && RAILS_ENV=production bundle exec unicorn_rails -c #{deploy_to}/current/config/unicorn.rb -D"
     end
   end
 
