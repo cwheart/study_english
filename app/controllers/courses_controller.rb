@@ -43,7 +43,6 @@ class CoursesController < ApplicationController
   end
 
   def test
-    
   end
 
   private

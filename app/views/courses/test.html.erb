@@ -9,7 +9,6 @@
     <%= item_form.input_field :word_id, :as => :hidden %>
     <%= item_form.input :name, label: item_form.object.content, wrapper_html: { answer: item_form.object.name_tmp, id: item_form.object.word_id } %>
   <% end -%>
-
 </div>
 <div>
   <%= f.button :submit %>
@@ -28,11 +27,12 @@ $(function(){
     $(".word-list .current span.error").remove();
     if($(".word-list .current input").val() != $(".word-list .current").attr("answer")){
       $(".word-list .current input").focus().after("<span class='error'>拼写错误</span>");
+    }else if($(".word-list .current").is(".word-list div:last")){
+       return true;
     }else{
-      if($(".word-list .current").is(".word-list div:last")) return true;
+      $(".word-list .current").removeClass("current").next().next("div").addClass("current");
+      $(".word-list .current input").focus();
     }
-    $(".word-list .current").removeClass("current").next().next("div").addClass("current");
-    $(".word-list .current input").focus();
     return false;
     // location.hash = "#" + $(".word-list .current").attr("id");
   });
