@@ -12,4 +12,11 @@ class QuizAnswer
   end
 
   accepts_nested_attributes_for :quiz_answer_items
+
+  after_create :finish_words
+
+  private
+  def finish_words
+    self.quiz.user_course.push(finish_word_ids: self.quiz_answer_items.map(&:word_id))
+  end
 end

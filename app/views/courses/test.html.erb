@@ -26,20 +26,16 @@ $(function(){
   }
   $("#word-form").submit(function(){
     $(".word-list .current span.error").remove();
-    if($(".word-list .current").is("div:last")){
-      
+    if($(".word-list .current input").val() != $(".word-list .current").attr("answer")){
+      $(".word-list .current input").focus().after("<span class='error'>拼写错误</span>");
     }else{
-      if($(".word-list .current input").val() == $(".word-list .current").attr("answer")){
-        $(".word-list .current").removeClass("current").next("div").addClass("current");
-        $(".word-list .current input").focus();
-      }else{
-        $(".word-list .current input").focus().after("<span class='error'>拼写错误</span>");
-      }
-      // location.hash = "#" + $(".word-list .current").attr("id");
-      return false;
+      if($(".word-list .current").is(".word-list div:last")) return true;
     }
+    $(".word-list .current").removeClass("current").next().next("div").addClass("current");
+    $(".word-list .current input").focus();
+    return false;
+    // location.hash = "#" + $(".word-list .current").attr("id");
   });
-
 });
 </script>
 <% end -%>

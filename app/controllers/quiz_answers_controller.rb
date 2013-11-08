@@ -25,6 +25,7 @@ class QuizAnswersController < ApplicationController
   # POST /quiz_answers.json
   def create
     @quiz_answer = QuizAnswer.new(quiz_answer_params)
+    @quiz_answer.quiz ||= Quiz.last
 
     respond_to do |format|
       if @quiz_answer.save
@@ -69,6 +70,6 @@ class QuizAnswersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quiz_answer_params
-      params[:quiz_answer]
+      params.require(:quiz_answer).permit(:quiz_id, quiz_answer_items_attributes: [:word_id, :name])
     end
 end
