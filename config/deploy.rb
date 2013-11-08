@@ -20,6 +20,7 @@ namespace :deploy do
   task :start do
     on roles(:app) do
       execute "cd #{deploy_to}/current/ && bundle exec puma -C config/puma.rb"
+      execute "cd #{deploy_to}/current/ && RAILS_ENV=production bundle exec unicorn_rails -c #{deploy_to}/current/config/unicorn.rb -D"
     end
   end
 
@@ -34,7 +35,8 @@ namespace :deploy do
   desc "Stop application"
   task :stop do
     on roles(:app) do
-      execute "cd #{deploy_to}/current/ && bundle exec pumactl -S tmp/states/puma.state stop"
+      # execute "cd #{deploy_to}/current/ && bundle exec pumactl -S tmp/states/puma.state stop"
+      execute "kill -USR2 `cat #{deploy_to}/current/tmp/pids/unicorn.pid`"
     end
   end
 
