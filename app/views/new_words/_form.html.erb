@@ -1,9 +1,8 @@
-<%= simple_form_for @new_word, :html => { :class => 'form-horizontal' } do |f| %>
+<%= simple_form_for @new_word, remote: true, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="error"><%= (@new_word.errors[:word_name] + @new_word.errors[:word_id]).first  %></div>
   <%= f.input :word_name %>
   
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                new_words_path, :class => 'btn' %>
   </div>
 <% end %>

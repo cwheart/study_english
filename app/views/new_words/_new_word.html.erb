@@ -1,0 +1,12 @@
+<tr id="<%= new_word.id %>">
+  <td><%= new_word.word.try(:name) %></td>
+  <td><%=l new_word.created_at %></td>
+  <td>
+    <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+    new_word_path(new_word),
+    :method => :delete,
+    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+    :class => 'btn btn-mini btn-danger',
+    :remote => true %>
+  </td>
+</tr>

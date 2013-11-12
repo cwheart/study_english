@@ -14,15 +14,6 @@ class NewWordsController < ApplicationController
   def show
   end
 
-  # GET /new_words/new
-  def new
-    @new_word = NewWord.new
-  end
-
-  # GET /new_words/1/edit
-  def edit
-  end
-
   # POST /new_words
   # POST /new_words.json
   def create
@@ -42,20 +33,6 @@ class NewWordsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /new_words/1
-  # PATCH/PUT /new_words/1.json
-  def update
-    respond_to do |format|
-      if @new_word.update(new_word_params)
-        format.html { redirect_to @new_word, notice: 'New word was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @new_word.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   # DELETE /new_words/1
   # DELETE /new_words/1.json
   def destroy
@@ -63,13 +40,14 @@ class NewWordsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to new_words_url }
       format.json { head :no_content }
+      format.js
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_new_word
-      @new_word = NewWord.find(params[:id])
+      @new_word = current_user.new_words.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

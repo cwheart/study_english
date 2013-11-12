@@ -11,21 +11,7 @@
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-  <tbody>
-    <% @new_words.each do |new_word| %>
-      <tr>
-        <td><%= new_word.word.try(:name) %></td>
-        <td><%=l new_word.created_at %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_new_word_path(new_word), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      new_word_path(new_word),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
+  <tbody id="new_word_list">
+    <%= render @new_words %>
   </tbody>
 </table>
