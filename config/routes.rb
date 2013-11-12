@@ -14,6 +14,7 @@ StudyEnglish::Application.routes.draw do
     resources :words, only: [:index]
   end
   resources :quiz_answers
+  resources :new_words
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

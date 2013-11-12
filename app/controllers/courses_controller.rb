@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   before_action :set_course, only: [:show, :update, :destroy, :explore, :test]
   before_action :set_quiz, only: [:show, :explore, :test]

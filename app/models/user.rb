@@ -38,4 +38,6 @@ class User
 
   ## Token authenticatable
   # field :authentication_token, :type => String
+
+  has_many :new_words
 end
