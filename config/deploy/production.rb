@@ -13,8 +13,8 @@ set :rails_env, 'production'
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
 role :app, %w{183.136.239.74}
-role :web, %w{183.136.239.74}
-role :db,  %w{183.136.239.74}
+role :web, %w{121.52.241.19}
+role :db,  %w{121.52.241.19}
 
 # Extended Server Syntax
 # ======================
@@ -22,7 +22,7 @@ role :db,  %w{183.136.239.74}
 # definition into the server list. The second argument
 # something that quacks like a has can be used to set
 # extended properties on the server.
-server '183.136.239.74', user: 'www-data', roles: %w{web app}, my_property: :my_value
+server '121.52.241.19', user: 'www-data', roles: %w{web app}, my_property: :my_value
 
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options
