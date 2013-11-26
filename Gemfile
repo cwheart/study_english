@@ -1,7 +1,7 @@
 # source 'https://rubygems.org'
 source 'http://ruby.taobao.org'
 
-ruby '2.0.0'
+ruby '2.1.0'
 gem 'newrelic_rpm'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
