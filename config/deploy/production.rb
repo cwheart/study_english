@@ -1,9 +1,9 @@
-set :stage, :production
+seset :stage, :production
 
 set :deploy_to, '/www/study_english'
 
 set :rvm_type, :system
-set :rvm_ruby_version, '2.0.0'
+set :rvm_ruby_version, '2.1.0'
 
 set :rails_env, 'production'
 
