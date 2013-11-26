@@ -19,7 +19,7 @@ namespace :deploy do
   desc "Start application"
   task :start do
     on roles(:app) do
-      execute "cd #{deploy_to}/current/ && bundle exec puma -C config/puma.rb"
+      # execute "cd #{deploy_to}/current/ && bundle exec puma -C config/puma.rb"
       execute "cd #{deploy_to}/current/ && RAILS_ENV=production bundle exec unicorn_rails -c #{deploy_to}/current/config/unicorn.rb -D"
     end
   end
