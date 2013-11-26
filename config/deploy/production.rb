@@ -1,4 +1,4 @@
-seset :stage, :production
+set :stage, :production
 
 set :deploy_to, '/www/study_english'
 
